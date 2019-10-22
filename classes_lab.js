@@ -51,12 +51,51 @@ console.log(book2.isGood());
 // ## Question 3
 
 // a. Create a `Dog` class with four properties: `name (string), breed (string), mood (string), and hungry (boolean)`.
+class Dog {
+    constructor(name, breed, mood, hungry){
+        Object.assign(this,{name, breed, mood, hungry});
+        // this.name = name;
+        // this.breed = breed;
+        // this.mood = mood;
+        // this.hungry = hungry;
+    }
+
+    playFetch(){
+        this.hungry = true;
+        this.mood = "playful";
+        return "Ruff!";
+    }
+
+    feed(){
+        if(this.hungry === true){
+            this.hungry = false;
+            return "Woof!"
+        } else{
+            return "The dog doesn't look hungry..";
+        }
+    }
+
+    toString(){
+        return "Dog's name is " + this.name + ". Dog's breed is " + this.breed + ". Dog's mood is " + this.mood + ". Is the dog hungry? " + this.hungry;
+    }
+}
+
+let dog1 = new Dog("Milo","Yorkie","happy", false);
+let dog2 = new Dog("Hero","Collie","excited", true);
 
 // b. Add a method called `playFetch`. It should set the dog's `hungry` property to `true`, set its mood property to `playful`, and log "Ruff!"
+console.log(dog1.playFetch());
+console.log(dog1);
 
 // c. Add a method called `feed`. If the dog is hungry, it should set `hungry` to `false` and print "Woof!" If the dog is not hungry, it should log "The dog doesn't look hungry"
+console.log(dog1.feed());
+console.log(dog1);
+console.log(dog2.feed());
+console.log
 
 // d. Add a method called `toString` that returns a description of the dog:
+console.log(dog1.toString());
+console.log(dog2.toString());
 
 // ## Question 4
 
@@ -67,26 +106,68 @@ console.log(book2.isGood());
 // K = C + 273
 
 // a. Make an object called `freezingPoint` that has three properties: `celsius`, `fahrenheit`, and `kelvin`. Give them all values equal to the freezing point of water.
+let freezingPoint = {
+    celsius: 0,
+    fahrenheit: 32,
+    kelvin: 273
+}
 
 
 // b. Make a class called `Celsius` that has one property: `celsius`, and two methods `getFahrenheitTemp`, and `getKelvinTemp`.
+class Celsius {
+
+    constructor(celsius){
+        this.celsius = celsius;
+    }
+    getFahrenheitTemp(){
+        return 1.8 * this.celsius + 32;
+    }
+    getKelvinTemp(){
+        return this.celsius + 273;
+    }
+
+    isBelowFreezing(){
+        if(this.celsius < freezingPoint["celsius"]){
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
 
 // ```js
-// let outsideTempt = new Celsius(10.0)
-// outsideTempt.celsius //returns 10.0
-// outsideTempt.getKelvinTemp() //returns 283.0
-// outsideTempt.getFahrenheitTemp() //returns 50.0
+let outsideTempt = new Celsius(10.0)
+console.log(outsideTempt.celsius) //returns 10.0
+console.log(outsideTempt.getKelvinTemp()) //returns 283.0
+console.log(outsideTempt.getFahrenheitTemp()) //returns 50.0
 // ```
 
 // c. Give `Celsius` a method called `isBelowFreezing` that returns a `Bool` (true if the temperature is below freezing).
+console.log("outsideTempt below freezing? " + outsideTempt.isBelowFreezing());
+let temp1 = new Celsius(-5.0);
+console.log("temp 1 below freezing? " + temp1.isBelowFreezing());
 
 // ## Question 5
 
 // a. Create a class called `Movie` that has properties for `name`, `year`, `genre`, `cast`, and `description`. Create an instance of your `Movie`
+class Movie {
+    constructor(name, year, genre, cast, description) {
+        this.name = name;
+        this.year = year;
+        this.genre = genre;
+        this.cast = cast;
+        this.description = description;
+    }
+    blurb(){
+        return `Lion King came out in ${this.year}. The plot is: ${this.description}`
+    }
+}
+let movieOne = new Movie("Lion King", "1994", "Animation", "Simba, Mufasa, Scar, Nala", "A Lion cub crown prince is tricked by a treacherous uncle into thinking he caused his father's death and flees into exile in despair, only to learn in adulthood his identity and his responsibilities.");
 
 // b. Create an method inside `Movie` called `blurb` that returns a formatted string describing the movie.
-
 // Ex: "Borat came out in 2006. It was an odd film starring Sacha Baron Cohen as a man named Borat who was visiting America from Kazakhstan."
+console.log(movieOne.blurb());
+
 
 
 // ## Question 6
