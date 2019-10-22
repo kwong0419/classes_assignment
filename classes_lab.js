@@ -183,18 +183,41 @@ console.log(movieOne.blurb());
 
 // [Vectors at mathisfun.com](https://www.mathsisfun.com/algebra/vectors.html)
 
+class Vector {
+    constructor( x, y){
+        this.x = x;
+        this.y = y;
+    }
+
+    plus(vector){
+        return new Vector(this.x + vector.x, this.y + vector.y);
+    }
+
+    minus(vector){
+        return new Vector(this.x - vector.x, this.y - vector.y);
+    }
+
+    getLength(length){
+        length = Math.sqrt(this.x**2 + this.y**2);
+        return length;
+    }
+}
+
 // ```js
-// var v1 = new Vector(1, 2)
-// var v2 = new Vector(2, 3)
-// console.log(v1.plus(v2));
+var v1 = new Vector(1, 2);
+var v2 = new Vector(2, 3)
+console.log(v1.plus(v2));
 // // => Vector {x: 3, y: 5}
-// console.log(v1.minus(v2));
+console.log(v1.minus(v2));
 // // => Vector {x: -1, y: -1}
 
-// var v3 = new Vector(3, 4)
-// console.log(v3.getLength());
+var v3 = new Vector(3, 4)
+console.log(v3.getLength());
 // // => 5
 // ```
+
+
+
 // ## Question 7
 
 // a. Write a class called `Cylinder` that has properties `radius` and `height`.  Create an instance of a Cylinder.
