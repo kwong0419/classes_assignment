@@ -274,9 +274,7 @@ console.log(postObjs.filter( (el) => el.postToday()));
 // ## Question 9
 
 // a. Make a class called `Car` with properties `make` and `model`.  Create an instance of a `Car`
-class Car {
-    
-}
+
 // b. Make a class called `Bike` with properties `gears` and `hasBell`.  Create an instance of `Bike`
 
 // c. Give each class a static method called `numberOfWheels` that returns the number of wheels (2 for bikes, 4 for cars).  Why does it make sense for this to be a static method instead of an instance method?
@@ -287,6 +285,47 @@ class Car {
 
 // b. Modify your `Car` and `Bike` classes from Question 7 to extend the `Vehicle` class.
 
+class Vehicle{
+    constructor(color, name){
+        this.color = color;
+        this.name = name;
+    }
+
+    makeSound() {
+        console.log("WHHOOSSSH");
+    }
+}
+
+class Car extends Vehicle {
+    constructor(color, name, make, model){
+        super(color,name);
+        this.make = make;
+        this.model = model;
+    }
+
+    static numberOfWheels(){
+        return 4;
+    }
+}
+let car = new Car("RS7 Sportback Coupe","Audi"); 
+
+class Bike extends Vehicle {
+    constructor(color, name, gears, hasBell){
+        super(color, name);
+        this.gears = gears;
+        this.hasBell = hasBell;
+    }
+    static numberOfWheels(){
+        return 2;
+    }
+}
+let bike = new Bike("gears","hasBell");
+
 // c. Create a new `Bike` instance that has a `color` of "green" and `name` "Bikey McBikeface"
+let bikeyMcBikeFace = new Bike("green", "bikeyMcBikeFace", "gears", "hasBell");
+console.log(bikeyMcBikeFace);
+
 
 // d. Create a new `Car` instance that has a `color` of "red" and `name` "Carry McCarface"
+let carryMcCarface = new Car("red", "Carry McCarface", "WRX STi", "Subaru");
+console.log(carryMcCarface);
